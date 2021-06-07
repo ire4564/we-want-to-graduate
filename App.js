@@ -3,6 +3,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import Avatar from './component/Avatar';
+import * as e4api from './api/v1/e4-connect-api'
 
 const theme = {
   ...DefaultTheme,
@@ -16,18 +17,20 @@ const theme = {
 
 
 export default function App() {
-  return (
-    <PaperProvider theme={theme}>
-        <View style={styles.container}>
-          <StatusBar style="auto" />
+    {/* API 사용 예제 */}
+    // var data = e4api.getLastSessionData();
 
-          <Avatar></Avatar>
-          <Text>23 years old</Text>
-          <Text>MIN PARK</Text>
+    return (
+        <PaperProvider theme={theme}>
+            <View style={styles.container}>
+            <StatusBar style="auto" />
+            <Avatar></Avatar>
+            <Text>23 years old</Text>
+            <Text>MIN PARK</Text>
 
-        </View>
-    </PaperProvider>
-  );
+            </View>
+        </PaperProvider>
+    );
 }
 
 const styles = StyleSheet.create({
