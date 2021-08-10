@@ -51,7 +51,7 @@ export default function App() {
       </View>
       <View style={styles.summaryGraph}>
         <ScrollView style={styles.scroll}>
-        <Graph/>
+        <Graph data="sample" color="#dd821g"/>
         </ScrollView>
       </View>
     </PaperProvider>
