@@ -1,23 +1,23 @@
 import * as React from 'react';
 import { StyleSheet, Dimensions, View, Text } from "react-native";
 import { LineChart } from 'react-native-chart-kit';
+import { useTheme } from 'react-native-paper';
 import * as e4api from '../api/v1/e4-connect-api';
 
 //const data = JSON.stringify(Data.EDA.microsecond); //e4api.getLastSessionData();
 
-const screenWidth = Dimensions.get("window").width/1.3;
+const screenWidth = Dimensions.get("window").width-60;
+
+
 const chartConfig = {
-    backgroundColor: "#FFFFFF",
-    backgroundGradientFrom: "#FFFFFF",
-    backgroundGradientTo: "#FFFFFF",
-    decimalPlaces: 2,
-    color: (opacity = 1) => `rgba(100, 100, 100, ${opacity})`,//보조선 색상
-    style: {
-    borderRadius: 16,
-    },
-    strokeWidth: 3, // optional, default 3
-    barPercentage: 0.5,
-    useShadowColorFromDataset: true // 그래프 아래 그라데이션 색상 반영
+  backgroundGradientTo: `#ffffff`,
+  backgroundGradientToOpacity: 0,
+  backgroundGradientFrom: `#ffffff`,
+  backgroundGradientFromOpacity: 0,
+  decimalPlaces: 0,
+  color: (opacity = 0.25) => `rgba(255, 255, 255, ${opacity})`,//보조선 색상
+  strokeWidth: 3, // optional, default 3
+  barPercentage: 1,
 };
 
 function average(array){
@@ -28,24 +28,22 @@ function average(array){
   return (sum/array.length).toFixed(2);
 };
 
-const hex2rgba = (hex, alpha = 1) => {
-  const [r, g, b] = hex.match(/\w\w/g).map(x => parseInt(x, 16));
-  return `rgba(${r},${g},${b},${alpha})`;
-};
 
 const Graph = (props) => {
   const [now, setNow] = React.useState(0);
   const [SampleData, setSampleData] = React.useState([108, 107, 110, 109, 106, 107, 108, 105, 107, 106, 108]);
-
+  const theme = useTheme();
+  
   let graph_SampleData = {
     datasets: [
       {
         data: SampleData.slice(now, now+10),
-        color: (opacity = 1) => hex2rgba(props.color, opacity), // 그래프 색상
+        color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`, // 그래프 색상
         strokeWidth: 6 // 선굵기
       }
     ],
   };
+
   React.useEffect(()=>{
     const interval = setInterval(()=>{
       let data = Math.floor(Math.random()*6)+103;
@@ -67,19 +65,10 @@ const Graph = (props) => {
       <LineChart
         data={selectData()}
         width={screenWidth}
-        height={90}
+        height={100}
         chartConfig={chartConfig}
         bezier
       />
-       <View
-      style={[styles.textView, {borderColor: hex2rgba(props.color)}]}
-      >
-        <Text
-        style={{
-          fontSize: 15,
-        }}
-        >{average(SampleData)}</Text>
-      </View>
       </View>
     </View>
   );
@@ -87,21 +76,8 @@ const Graph = (props) => {
 export default Graph;
 
 const styles = StyleSheet.create({
-  textView: {
-    width: screenWidth/4,
-    height : screenWidth/4,
-    borderRadius: 100,
-    borderWidth: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-    alignSelf: 'center',
-  },
   graphView:{
-    flexDirection: "row",
-    marginBottom: 15,
-    backgroundColor: "#FFFFFF",
-    borderRadius: 20,
-    paddingVertical: 20,
-    paddingRight: 5,
+    left : -15,
+    alignSelf: 'center',
   },
 });
