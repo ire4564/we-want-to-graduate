@@ -13,8 +13,7 @@ import CurrentResult from './component/CurrentResult'
 import TimeLog from './component/TimeLog'
 import * as e4api from './api/v1/e4-connect-api'
 
-/*Face icon 관련*/
-import { LowIcon, NormalIcon, CautionIcon, PrehighIcon, HighIcon } from './component/Face-icon';
+import ShowIcon from './component/Show-icon';
 
 const theme = {
   ...DefaultTheme,
@@ -42,24 +41,25 @@ export default function App() {
 
   return (
     <PaperProvider theme={theme}>
-      <View style={{flex: 1, backgroundColor:theme.colors.primary}}>
+      <View style={styles.faceIcon}>
+        <ShowIcon systolic={123} relaxa={80}/>
+      </View>
+      <View style={{flex: 0.5, backgroundColor:theme.colors.primary}}>
         <Block content={<CurrentResult systolic={100} diastolic={82}/>}/>
         <Block content={<TimeLog />}/>
-        <Block content={graph}/>
-
-        <LowIcon/>
-        <NormalIcon/>
-        <CautionIcon/>
-        <PrehighIcon/>
-        <HighIcon/>
-        
-
+        <Block content={graph}/>  
       </View>
     </PaperProvider>
     );
 }
 
 const styles = StyleSheet.create({
+  faceIcon: {
+    flex: 0.5, 
+    justifyContent: "center",
+    backgroundColor:theme.colors.primary,
+    alignItems:'center',
+  },
   scroll:{
     marginTop: 15,
   },
