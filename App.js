@@ -13,6 +13,9 @@ import CurrentResult from './component/CurrentResult'
 import TimeLog from './component/TimeLog'
 import * as e4api from './api/v1/e4-connect-api'
 
+/*Face icon 관련*/
+import { LowIcon, NormalIcon, CautionIcon, PrehighIcon, HighIcon } from './component/Face-icon';
+
 const theme = {
   ...DefaultTheme,
   roundness: 2,
@@ -43,6 +46,14 @@ export default function App() {
         <Block content={<CurrentResult systolic={100} diastolic={82}/>}/>
         <Block content={<TimeLog />}/>
         <Block content={graph}/>
+
+        <LowIcon/>
+        <NormalIcon/>
+        <CautionIcon/>
+        <PrehighIcon/>
+        <HighIcon/>
+        
+
       </View>
     </PaperProvider>
     );
