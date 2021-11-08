@@ -2,15 +2,11 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
-import { useTheme } from 'react-native-paper';
-import Avatar from './component/Avatar';
-import HeartIcon from './component/heart-icon';
-import GraphIcon from './component/graph-icon';
-import BarbellIcon from './component/barbell-icon';
 import Graph from './component/Graph';
 import Block from './component/Block';
 import CurrentResult from './component/CurrentResult';
 import TimeLog from './component/TimeLog';
+import ReloadTime from './component/ReloadTime';
 import * as e4api from './api/v1/e4-connect-api';
 
 import * as ChangeColor from './component/Background';
@@ -48,6 +44,7 @@ export default function App() {
   return (
     <PaperProvider theme={theme}>
       <View style={{flex: 0.5, justifyContent: "center", alignItems:'center',backgroundColor: ChangeColor.Background(systolics, relaxas)}}>
+        <ReloadTime/>
         <ShowIcon systolic={systolics} relaxa={relaxas}/>
       </View>
       <View style={{flex: 0.5, backgroundColor:(ChangeColor.Background(systolics, relaxas))}}>
