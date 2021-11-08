@@ -44,7 +44,7 @@ export default function App() {
 
   return (
     <PaperProvider theme={theme}>
-      <Bar/>
+      <Bar color={ChangeColor.Background(systolics, relaxas)}/>
       <View style={{flex: 0.45, justifyContent: "center", alignItems:'center',backgroundColor: ChangeColor.Background(systolics, relaxas)}}>
         <ReloadTime/>
         <ShowIcon systolic={systolics} relaxa={relaxas}/>

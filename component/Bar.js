@@ -1,12 +1,14 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { Appbar } from 'react-native-paper';
-import { Platform } from 'react-native';
+import { Text } from "react-native";
+import * as ChangeColor from '../component/Background';
 
-const Bar = () => (
-    <Appbar.Header style={{backgroundColor: "#ffff"}}>
-        <Appbar.Action icon="menu" onPress={() => {}} />
-        <Appbar.Action icon="share" style={{flexDirection: "column", alignItems: "flex-end"}} onPress={() => {}} />
+export default function Bar(props) {
+    return (
+        <Appbar.Header style={{backgroundColor: props.color,}}>
+        <Appbar.Action icon="menu" style={{flex: 0.1}} onPress={() => {}} />
+        <Text style={{flex: 0.8}}></Text>
+        <Appbar.Action icon="share" style={{flex: 0.1}} onPress={() => {}} />
     </Appbar.Header>
-);
-
-export default Bar;
+    );
+};

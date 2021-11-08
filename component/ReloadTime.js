@@ -22,6 +22,7 @@ export default function ReloadTime() {
 
 const styles = StyleSheet.create({
     view: {
+        marginTop: -20,
         justifyContent: "center", 
         alignItems:'center'
     },  
