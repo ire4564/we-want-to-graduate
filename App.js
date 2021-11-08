@@ -7,6 +7,7 @@ import Block from './component/Block';
 import CurrentResult from './component/CurrentResult';
 import TimeLog from './component/TimeLog';
 import ReloadTime from './component/ReloadTime';
+import Bar from './component/Bar';
 import * as e4api from './api/v1/e4-connect-api';
 
 import * as ChangeColor from './component/Background';
@@ -32,7 +33,7 @@ export default function App() {
   //var data = e4api.getLastSessionData();
   
   //혈압 값 예측
-  const [systolics, setSystolics] = useState(139);
+  const [systolics, setSystolics] = useState(110);
   const [relaxas, setRelaxas] = useState(80);
   
   // 그래프 컴포넌트
@@ -43,11 +44,12 @@ export default function App() {
 
   return (
     <PaperProvider theme={theme}>
-      <View style={{flex: 0.5, justifyContent: "center", alignItems:'center',backgroundColor: ChangeColor.Background(systolics, relaxas)}}>
+      <Bar/>
+      <View style={{flex: 0.45, justifyContent: "center", alignItems:'center',backgroundColor: ChangeColor.Background(systolics, relaxas)}}>
         <ReloadTime/>
         <ShowIcon systolic={systolics} relaxa={relaxas}/>
       </View>
-      <View style={{flex: 0.5, backgroundColor:(ChangeColor.Background(systolics, relaxas))}}>
+      <View style={{flex: 0.55, backgroundColor:(ChangeColor.Background(systolics, relaxas))}}>
         <Block content={<CurrentResult systolic={systolics} diastolic={relaxas}/>}/>
         <Block content={<TimeLog />}/>
         <Block content={graph}/>

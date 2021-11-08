@@ -12,7 +12,6 @@ export default function ReloadTime() {
 
     return(
         <View style={styles.view}>
-            <Text></Text>
             <Text style={styles.title}>오늘의 혈압</Text>
             <Text style={styles.detail}>최근 측정 일시</Text>
             <Text style={styles.detail}>{date}   <Icon name="reload1" onPress={clickLoad} size={15} color="#ffffff"/></Text>
